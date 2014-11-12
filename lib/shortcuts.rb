@@ -22,6 +22,10 @@ Magickly.dragonfly.configure do |c|
     process :convert, "-resize #{size}^ -gravity Center -crop #{size}+0+0 +repage"
   end
 
+  c.job :scale_and_centre_crop_and_blur do |vals|
+    size, radius, sigma = vals.split(",")
+    process :convert, "-blur #{radius}x#{sigma} -resize #{size}^ -gravity Center -crop #{size}+0+0 +repage"
+  end
   
   c.job :tilt_shift do |coefficients|
     coefficients = '4,-4,1' if coefficients == 'true'
