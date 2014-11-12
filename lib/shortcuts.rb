@@ -12,6 +12,12 @@ Magickly.dragonfly.configure do |c|
   c.job :resize_with_blur do |size|
     process :convert, "-filter Gaussian -resize #{size}"
   end
+
+  c.job :resize_and_blur do |vals|
+    size, radius, sigma = vals.split(",")
+    process :convert, "-blur #{radius}x#{sigma} -resize #{size}"
+  end
+
   
   c.job :tilt_shift do |coefficients|
     coefficients = '4,-4,1' if coefficients == 'true'
