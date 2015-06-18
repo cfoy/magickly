@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
   s.summary = "image manipulation as a (plugin-able) service"
 
   s.add_dependency('sinatra', ['~> 1.2'])
-  s.add_dependency('dragonfly', ['~> 0.9.14'])
+  s.add_dependency('dragonfly', ['~> 0.9'])
   s.add_dependency('addressable', ['~> 2.2'])
   s.add_dependency('httparty', ['~> 0.13'])
   s.add_dependency('activesupport', ['>= 2.0.0', '< 5'])

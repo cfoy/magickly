@@ -6,6 +6,7 @@ gem 'dotenv'
 
 gem 'rake'
 gem 'rack-cache', :require => 'rack/cache'
+gem 'thin', :group => :development
 
 group :development, :test do
   gem 'rack-test'
