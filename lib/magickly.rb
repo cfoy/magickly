@@ -20,6 +20,8 @@ module Magickly
     # seems this config param was removed from Dragonfly ~v0.9.8
     # c.log_commands = true
   end
+
+  @dragonfly.generator.register(Dragonfly::ImageMagick::AvatarGenerator)
   
   class << self
     def dragonfly
