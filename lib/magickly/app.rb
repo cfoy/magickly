@@ -43,6 +43,27 @@ module Magickly
       erb :analyzers
     end
 
+    # matches size
+    get '/avatar/:size?' do
+      text = params[:text] ? URI.unescape(params[:text]) : "Fluid Media"
+      image = Magickly.dragonfly.generate(:initial_avatar, text, { size: params[:size] } )
+      image.to_response(env)
+    end
+
+    # matches size and background
+    get '/avatar/:size/:background?' do
+      text = params[:text] ? URI.unescape(params[:text]) : "Fluid Media"
+      image = Magickly.dragonfly.generate(:initial_avatar, text, { size: params[:size], background_color: params[:background] } )
+      image.to_response(env)
+    end
+
+    # matczhes size, background, and font color
+    get '/avatar/:size/:background/:color?' do
+      text = params[:text] ? URI.unescape(params[:text]) : "Fluid Media"
+      image = Magickly.dragonfly.generate(:initial_avatar, text, { size: params[:size], background_color: params[:background], color: params[:color] } )
+      image.to_response(env)
+    end
+
     get '/analyze/:name' do |method|
       src = params[:src]
       if src
