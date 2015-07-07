@@ -14,6 +14,7 @@ module Dragonfly
         background = opts[:background_color] ? "##{opts[:background_color]}" : '#000000'
         color = opts[:color] ? "##{opts[:color]}" : '#FFFFFF'
         size = opts[:size] || '120x120'
+        font = opts[:font] || 'Arial-Regular'
 
         text = (string.split(/\s/)- ["", nil]).map { |t| t[0].upcase }.slice(0, 3).join('')
 
@@ -26,8 +27,8 @@ module Dragonfly
         args.push("-gravity Center")
         args.push("-antialias")
         args.push("-pointsize #{font_size}")
-        args.push("-font \"#{opts[:font]}\"") if opts[:font]
-        args.push("-family '#{font_family}'") if opts[:font]
+        args.push("-font \"#{font}\"")
+        args.push("-family '#{opts[:font_family]}'") if opts[:font_family]
         args.push("-fill #{color}")
         args.push("-background #{background}")
         args.push("label:#{text}")
